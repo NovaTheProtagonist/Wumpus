@@ -26,8 +26,8 @@ public class Hero {
         return arrows;
     }
 
-    public void decreaseArrowCount() {
-        --arrows;
+    public void setArrows(int arrows) {
+        this.arrows = arrows;
     }
 
     public FacingDirection getFacingDirection() {
