@@ -5,8 +5,7 @@ public enum TileType {
     WALL('W'),
     GOLD('G'),
     PIT('P'),
-    EMPTY('_'),
-    UNKNOWN('?');
+    EMPTY('_');
 
     private final char shortName;
 
