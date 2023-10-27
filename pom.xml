@@ -56,7 +56,7 @@
                             <archive>
                                 <manifest>
                                     <mainClass>
-                                       App
+                                       app.App
                                     </mainClass>
                                 </manifest>
                             </archive>
