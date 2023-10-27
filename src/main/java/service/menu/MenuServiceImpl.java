@@ -8,7 +8,7 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public void exit() {
-
+        System.exit(0);
     }
 
     @Override
