@@ -25,7 +25,7 @@ class MenuServiceImplTest {
     void testReadFileShouldCreateCorrectBoardTilesWhenInputIsValid() {
         String testFileName = "Input1.txt";
 
-        String result = menuService.readFile(testFileName).toString();
+        String result = menuService.readFile(testFileName).orElseThrow().toString();
 
         Assertions.assertEquals(expectedBoard, result);
     }
@@ -49,6 +49,11 @@ class MenuServiceImplTest {
     }
 
     @Test
-    void cachePlayerName() {
+    void testCachePlayerNameShouldSaveValidInput() {
+        String testInput = "Péter";
+
+        String result = menuService.cachePlayerName(testInput);
+
+        Assertions.assertEquals(testInput, result);
     }
 }
