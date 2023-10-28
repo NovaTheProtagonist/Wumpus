@@ -2,6 +2,7 @@ package service.menu;
 
 import java.io.InputStream;
 import java.util.Arrays;
+import java.util.Optional;
 import java.util.Scanner;
 
 import model.board.Board;
@@ -25,8 +26,8 @@ public class MenuServiceImpl implements MenuService {
     }
 
     @Override
-    public Board readFile(String fileName) {
-        Board newBoard = null;
+    public Optional<Board> readFile(String fileName) {
+        Optional<Board> newBoard = Optional.empty();
         InputStream boardFile = this.getClass().getClassLoader().getResourceAsStream(fileName);
 
         Scanner reader = null;
@@ -35,11 +36,13 @@ public class MenuServiceImpl implements MenuService {
             String firstLine = reader.nextLine();
             String[] gameConfig = firstLine.split(" ");
             Coordinate playerStartCoordinate = new Coordinate(gameConfig[1].charAt(0), Integer.parseInt(gameConfig[2]));
-            newBoard = new Board(Integer.parseInt(gameConfig[0]), playerStartCoordinate);
-            for (int i = 0; i < newBoard.getSize(); i++) {
+            int boardSize = Integer.parseInt(gameConfig[0]);
+            newBoard = Optional.of(new Board(Integer.parseInt(gameConfig[0]), playerStartCoordinate));
+
+            for (int i = 0; i < boardSize; i++) {
                 String line = reader.nextLine();
-                for (int j = 0; j < newBoard.getSize(); j++) {
-                    newBoard.setBoardTile(i, j, line.charAt(j) );
+                for (int j = 0; j < boardSize; j++) {
+                    newBoard.get().setBoardTile(i, j, line.charAt(j) );
 
                 }
             }

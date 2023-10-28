@@ -1,9 +1,9 @@
 package view;
 
 import model.board.Board;
-import model.board.BoardTile;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class ViewImpl implements View {
@@ -40,9 +40,13 @@ public class ViewImpl implements View {
     }
 
     @Override
-    public void printBoard(Board board) {
-        System.out.println(board);
-
+    public void printBoard(Optional<Board> board) {
+        if(board.isPresent()){
+            System.out.println(board.get());
+        }
+        else{
+            System.out.println("Unable to read file");
+        }
     }
 
     @Override

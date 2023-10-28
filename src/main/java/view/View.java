@@ -3,6 +3,7 @@ package view;
 import model.board.Board;
 
 import java.util.List;
+import java.util.Optional;
 
 
 public interface View {
@@ -14,7 +15,7 @@ public interface View {
 
     String requestFileName();
 
-    void printBoard(Board board);
+    void printBoard(Optional<Board> board);
 
     void printCommandNotFound();
 }

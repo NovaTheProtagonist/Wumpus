@@ -6,6 +6,8 @@ import model.board.Board;
 import service.menu.MenuService;
 import view.View;
 
+import java.util.Optional;
+
 public class ReadFileCommand implements Command {
     private final MenuService menuService;
     private final View view;
@@ -18,7 +20,7 @@ public class ReadFileCommand implements Command {
     @Override
     public void execute() {
         String fileName = view.requestFileName();
-        Board board = menuService.readFile(fileName);
+        Optional<Board> board = menuService.readFile(fileName);
         view.printBoard(board);
     }
 

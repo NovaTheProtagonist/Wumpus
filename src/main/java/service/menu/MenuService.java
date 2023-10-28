@@ -2,12 +2,15 @@ package service.menu;
 
 import model.board.Board;
 
+import java.util.Optional;
+import java.util.OptionalInt;
+
 public interface MenuService {
     void startGame();
 
     void exit();
 
-    Board readFile(String fileName);
+    Optional<Board> readFile(String fileName);
 
     void loadFromDatabase(String playerName);
 
