@@ -54,4 +54,11 @@ class MenuServiceImplTest {
 
         Assertions.assertEquals(testInput, result);
     }
+
+    @Test
+    void testExitShouldSwitchTheValueOfTheBooleanExpression() {
+
+        menuService.exit();
+        Assertions.assertFalse(menuService.shouldRun());
+    }
 }
