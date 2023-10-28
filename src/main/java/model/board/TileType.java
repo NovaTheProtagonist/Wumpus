@@ -9,6 +9,10 @@ public enum TileType {
 
     private final char shortName;
 
+    public char getShortName() {
+        return shortName;
+    }
+
     TileType(char shortName) {
         this.shortName = shortName;
     }
