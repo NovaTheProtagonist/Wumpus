@@ -1,5 +1,7 @@
 package view;
 
+import model.board.Board;
+
 import java.util.List;
 
 
@@ -11,4 +13,6 @@ public interface View {
     String requestMenuCommand(List<String> commandList);
 
     String requestFileName();
+
+    void printBoard(Board board);
 }
