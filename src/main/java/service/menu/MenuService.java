@@ -1,11 +1,13 @@
 package service.menu;
 
+import model.board.Board;
+
 public interface MenuService {
     void startGame();
 
     void exit();
 
-    void readFile(String fileName);
+    Board readFile(String fileName);
 
     void loadFromDatabase(String playerName);
 
