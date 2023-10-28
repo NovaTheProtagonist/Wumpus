@@ -15,6 +15,7 @@ public class Board {
         boardTiles = new BoardTile[size][size];
         this.playerStartCoordinate = playerStartCoordinate;
     }
+
     public int getSize() {
         return size;
     }
@@ -23,7 +24,7 @@ public class Board {
         return boardTiles[firstDimension][secondDimension];
     }
 
-    public void setBoardTile(int firstDimension, int secondDimension, char typeID){
+    public void setBoardTile(int firstDimension, int secondDimension, char typeID) {
         boardTiles[firstDimension][secondDimension] = new BoardTile(typeID);
     }
 

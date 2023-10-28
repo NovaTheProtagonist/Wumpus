@@ -1,9 +1,8 @@
 package service.menu;
 
-import model.board.Board;
-
 import java.util.Optional;
-import java.util.OptionalInt;
+
+import model.board.Board;
 
 public interface MenuService {
     void startGame();

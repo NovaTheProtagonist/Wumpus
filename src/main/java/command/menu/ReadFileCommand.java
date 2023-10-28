@@ -1,12 +1,13 @@
 package command.menu;
 
+import java.util.Optional;
+
 import command.Command;
 import command.GameStateBinding;
 import model.board.Board;
 import service.menu.MenuService;
 import view.View;
 
-import java.util.Optional;
 
 public class ReadFileCommand implements Command {
     private final MenuService menuService;

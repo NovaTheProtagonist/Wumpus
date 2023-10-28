@@ -1,9 +1,10 @@
 package view;
 
-import model.board.Board;
-
 import java.util.List;
 import java.util.Optional;
+
+import model.board.Board;
+
 
 
 public interface View {

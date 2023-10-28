@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class BoardTile {
     private TileType type = TileType.EMPTY;
 
-    public BoardTile(char typeID){
+    public BoardTile(char typeID) {
         this.type = Arrays.stream(TileType.values())
                 .filter((tileType -> tileType.getShortName() == typeID))
                 .findAny()

@@ -42,7 +42,7 @@ public class MenuServiceImpl implements MenuService {
             for (int i = 0; i < boardSize; i++) {
                 String line = reader.nextLine();
                 for (int j = 0; j < boardSize; j++) {
-                    newBoard.get().setBoardTile(i, j, line.charAt(j) );
+                    newBoard.get().setBoardTile(i, j, line.charAt(j));
 
                 }
             }
