@@ -1,11 +1,12 @@
 package app;
 
+import java.util.Map;
+
 import command.Command;
 import command.GameStateBinding;
 import view.View;
 
-import java.util.Map;
-import java.util.Scanner;
+
 
 public class WumpusGame {
     private String playerName;

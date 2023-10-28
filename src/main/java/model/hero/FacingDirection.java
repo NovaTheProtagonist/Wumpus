@@ -47,5 +47,6 @@ public enum FacingDirection {
     };
 
     public abstract FacingDirection toRight();
+
     public abstract FacingDirection toLeft();
 }

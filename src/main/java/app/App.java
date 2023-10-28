@@ -1,5 +1,7 @@
 package app;
 
+import java.util.Map;
+
 import command.Command;
 import command.menu.ExitCommand;
 import command.menu.ReadFileCommand;
@@ -8,11 +10,9 @@ import service.menu.MenuServiceImpl;
 import view.View;
 import view.ViewImpl;
 
-import java.util.Map;
-
 public class App {
-    private final static MenuService menuService = new MenuServiceImpl();
-    private final static View view = new ViewImpl();
+    private static final MenuService menuService = new MenuServiceImpl();
+    private static final View view = new ViewImpl();
 
     public static void main(String[] args) {
         Map<String, Command> commandMap = assembleCommandMap();
@@ -23,7 +23,7 @@ public class App {
     private static Map<String, Command> assembleCommandMap() {
         return Map.of(
                 "exit", new ExitCommand(menuService),
-                "read from file", new ReadFileCommand(menuService,view)
+                "read from file", new ReadFileCommand(menuService, view)
         );
     }
 

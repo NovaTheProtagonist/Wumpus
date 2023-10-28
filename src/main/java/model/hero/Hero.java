@@ -38,6 +38,7 @@ public class Hero {
         switch (rotation) {
             case RIGHT -> facingDirection = facingDirection.toRight();
             case LEFT -> facingDirection = facingDirection.toLeft();
+            default -> throw new RuntimeException("Cannot rotate player: Invalid rotation");
         }
     }
 }

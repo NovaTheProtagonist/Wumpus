@@ -22,7 +22,7 @@ public class ViewImpl implements View {
     public String requestMenuCommand(List<String> commandList) {
         System.out.println("MENU\n");
         System.out.println("Please select a command:");
-        commandList.forEach((String command)-> System.out.println("- "+command));
+        commandList.forEach((String command) -> System.out.println("- " + command));
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }

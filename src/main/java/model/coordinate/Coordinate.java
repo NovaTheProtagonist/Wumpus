@@ -1,8 +1,7 @@
 package model.coordinate;
 
-import model.hero.FacingDirection;
-
 import java.util.Objects;
+
 
 public class Coordinate {
     private final char column;
@@ -15,8 +14,12 @@ public class Coordinate {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Coordinate that = (Coordinate) o;
         return column == that.column && row == that.row;
     }
