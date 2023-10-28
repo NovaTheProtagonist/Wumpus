@@ -17,7 +17,7 @@ public class App {
 
     public static void main(String[] args) {
         Map<String, Command> commandMap = assembleCommandMap();
-        WumpusGame game = new WumpusGame(view, commandMap);
+        WumpusGame game = new WumpusGame(view, menuService, commandMap);
         game.start();
     }
 

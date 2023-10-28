@@ -15,6 +15,9 @@ public class MenuServiceImpl implements MenuService {
 
     private String playerName;
 
+
+    private boolean shouldRun = true;
+
     @Override
     public void startGame() {
 
@@ -22,7 +25,7 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public void exit() {
-        System.exit(0);
+        shouldRun = false;
     }
 
     @Override
@@ -70,5 +73,10 @@ public class MenuServiceImpl implements MenuService {
     public String cachePlayerName(String playerName) {
         this.playerName = playerName;
         return this.playerName;
+    }
+
+    @Override
+    public boolean shouldRun() {
+        return shouldRun;
     }
 }

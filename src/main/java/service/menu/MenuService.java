@@ -17,4 +17,6 @@ public interface MenuService {
 
     String cachePlayerName(String playerName);
 
+    boolean shouldRun();
+
 }
