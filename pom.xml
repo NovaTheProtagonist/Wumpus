@@ -73,7 +73,7 @@
                 <version>0.8.2</version>
                 <configuration>
                     <excludes>
-                        <exclude>app/App.java</exclude>
+                        <exclude>app/**</exclude>
                         <exclude>model/**</exclude>
                         <exclude>view/**</exclude>
                         <exclude>command/**</exclude>
