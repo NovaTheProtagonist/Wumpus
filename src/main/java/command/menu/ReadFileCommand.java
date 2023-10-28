@@ -2,6 +2,7 @@ package command.menu;
 
 import command.Command;
 import command.GameStateBinding;
+import model.board.Board;
 import service.menu.MenuService;
 import view.View;
 
@@ -17,7 +18,8 @@ public class ReadFileCommand implements Command {
     @Override
     public void execute() {
         String fileName = view.requestFileName();
-        menuService.readFile(fileName);
+        Board board = menuService.readFile(fileName);
+        view.printBoard(board);
     }
 
     @Override
