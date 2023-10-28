@@ -15,4 +15,6 @@ public interface View {
     String requestFileName();
 
     void printBoard(Board board);
+
+    void printCommandNotFound();
 }

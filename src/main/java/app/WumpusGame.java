@@ -34,8 +34,13 @@ public class WumpusGame {
     private void startGameCycle() {
         while (gameState == GameStateBinding.MENU_STATE) {
             String input = view.requestMenuCommand(commandMap.keySet().stream().toList());
-            Command command = commandMap.get(input);
-            command.execute();
+            if(!commandMap.containsKey(input)){
+                view.printCommandNotFound();
+            }
+            else{
+                Command command = commandMap.get(input);
+                command.execute();
+            }
         }
     }
 

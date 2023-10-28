@@ -44,4 +44,9 @@ public class ViewImpl implements View {
         System.out.println(board);
 
     }
+
+    @Override
+    public void printCommandNotFound() {
+        System.out.println("Invalid Command");
+    }
 }
