@@ -16,6 +16,6 @@ public interface MenuService {
 
     void saveToDatabase(String playerName, Integer winCount);
 
-    void cachePlayerName(String playerName);
+    String cachePlayerName(String playerName);
 
 }

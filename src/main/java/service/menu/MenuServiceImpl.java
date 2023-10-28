@@ -67,7 +67,8 @@ public class MenuServiceImpl implements MenuService {
     }
 
     @Override
-    public void cachePlayerName(String playerName) {
+    public String cachePlayerName(String playerName) {
         this.playerName = playerName;
+        return this.playerName;
     }
 }
