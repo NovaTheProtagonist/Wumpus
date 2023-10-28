@@ -5,6 +5,7 @@ import java.util.Map;
 import command.Command;
 import command.menu.ExitCommand;
 import command.menu.ReadFileCommand;
+import command.menu.SavePlayerNameCommand;
 import service.menu.MenuService;
 import service.menu.MenuServiceImpl;
 import view.View;
@@ -22,8 +23,9 @@ public class App {
 
     private static Map<String, Command> assembleCommandMap() {
         return Map.of(
-                "exit", new ExitCommand(menuService),
-                "read from file", new ReadFileCommand(menuService, view)
+                "change name", new SavePlayerNameCommand(menuService, view),
+                "read from file", new ReadFileCommand(menuService, view),
+                "exit", new ExitCommand(menuService)
         );
     }
 

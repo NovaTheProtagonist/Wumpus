@@ -4,12 +4,14 @@ import java.util.Map;
 
 import command.Command;
 import command.GameStateBinding;
+import command.menu.SavePlayerNameCommand;
+import service.menu.MenuService;
 import view.View;
 
 
 
 public class WumpusGame {
-    private String playerName;
+
     private GameStateBinding gameState;
 
     private final View view;
@@ -24,7 +26,8 @@ public class WumpusGame {
 
     public void start() {
         view.printStartMessage();
-        playerName = view.requestPlayerName();
+        Command playerNameCommand = commandMap.get("change name");
+        playerNameCommand.execute();
         startGameCycle();
     }
 

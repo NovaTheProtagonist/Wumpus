@@ -12,7 +12,7 @@ import model.hero.FacingDirection;
 
 public class MenuServiceImpl implements MenuService {
 
-
+    private String playerName;
 
     @Override
     public void startGame() {
@@ -63,4 +63,8 @@ public class MenuServiceImpl implements MenuService {
         
     }
 
+    @Override
+    public void cachePlayerName(String playerName) {
+        this.playerName = playerName;
+    }
 }
