@@ -1,5 +1,8 @@
 package view;
 
+import model.board.Board;
+import model.board.BoardTile;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -29,6 +32,16 @@ public class ViewImpl implements View {
 
     @Override
     public String requestFileName() {
-        return null;
+        System.out.println("Please type in the name of the file:\n");
+        Scanner scanner = new Scanner(System.in);
+        String fileName = scanner.nextLine();
+        System.out.println("Loading File: " + fileName);
+        return fileName;
+    }
+
+    @Override
+    public void printBoard(Board board) {
+        System.out.println(board);
+
     }
 }
