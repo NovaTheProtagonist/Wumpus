@@ -3,7 +3,7 @@ package command.menu;
 import java.util.Optional;
 
 import command.Command;
-import command.GameStateBinding;
+import app.GameState;
 import model.board.Board;
 import service.menu.MenuService;
 import view.View;
@@ -23,10 +23,5 @@ public class ReadFileCommand implements Command {
         String fileName = view.requestFileName();
         Optional<Board> board = menuService.readFile(fileName);
         view.printBoard(board);
-    }
-
-    @Override
-    public GameStateBinding getGameStateBinding() {
-        return GameStateBinding.MENU_STATE;
     }
 }

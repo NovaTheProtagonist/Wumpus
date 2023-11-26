@@ -1,7 +1,7 @@
 package command.menu;
 
 import command.Command;
-import command.GameStateBinding;
+import app.GameState;
 import service.menu.MenuService;
 import view.View;
 
@@ -19,10 +19,5 @@ public class SavePlayerNameCommand implements Command {
     public void execute() {
         String playerName = view.requestPlayerName();
         menuService.cachePlayerName(playerName);
-    }
-
-    @Override
-    public GameStateBinding getGameStateBinding() {
-        return GameStateBinding.MENU_STATE;
     }
 }
