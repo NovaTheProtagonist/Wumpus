@@ -23,7 +23,9 @@ class MenuServiceImplTest {
     void testReadFileShouldCreateCorrectBoardTilesWhenInputIsValid() {
         String testFileName = "Input1.txt";
 
-        String result = menuService.readFile(testFileName).orElseThrow().toString();
+        menuService.readFile(testFileName);
+
+        String result = menuService.getBoard().orElseThrow().toString();
 
         Assertions.assertEquals(expectedBoard, result);
     }
@@ -41,7 +43,9 @@ class MenuServiceImplTest {
 
         Optional<Board> expected = Optional.empty();
 
-        Optional<Board> result = menuService.readFile(testFileName);
+        menuService.readFile(testFileName);
+
+        Optional<Board> result = menuService.getBoard();
 
         Assertions.assertEquals(expected, result);
     }
