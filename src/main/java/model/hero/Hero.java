@@ -34,6 +34,9 @@ public class Hero {
         return facingDirection;
     }
 
+    public void setFacingDirection(FacingDirection facingDirection) {
+        this.facingDirection = facingDirection;
+    }
     public void rotate(Rotation rotation) {
         switch (rotation) {
             case RIGHT -> facingDirection = facingDirection.toRight();
