@@ -24,6 +24,15 @@ public class ViewImpl implements View {
     @Override
     public String requestMenuCommand(List<String> commandList) {
         System.out.println("MENU\n");
+        return requestCommand(commandList);
+    }
+
+    @Override
+    public String requestGameCommand(List<String> commandList) {
+        return requestCommand(commandList);
+    }
+
+    private static String requestCommand(List<String> commandList) {
         System.out.println("Please select a command:");
         commandList.forEach((String command) -> System.out.println("- " + command));
         Scanner scanner = new Scanner(System.in);

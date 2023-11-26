@@ -13,7 +13,7 @@ public interface View {
     String requestPlayerName();
 
     String requestMenuCommand(List<String> commandList);
-
+    String requestGameCommand(List<String> commandList);
     String requestFileName();
 
     void printBoard(Optional<Board> board);
