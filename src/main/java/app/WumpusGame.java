@@ -10,17 +10,16 @@ import view.View;
 
 public class WumpusGame {
 
-    private final View view;
+    private GameState gameState;
 
-    private final MenuService menuService;
+    private View view;
 
-    private final Map<String, Command> commandMap;
+    private Map<String, Command> commandMap;
 
-    public WumpusGame(View view, MenuService menuService, Map<String, Command> commandMap) {
-        this.view = view;
-        this.menuService = menuService;
-        this.commandMap = commandMap;
+    public WumpusGame() {
+        this.gameState = GameState.MENU_STATE;
     }
+
 
     public void start() {
         view.printStartMessage();
@@ -30,15 +29,34 @@ public class WumpusGame {
     }
 
     private void startGameCycle() {
-        while (menuService.shouldRun()) {
-            String input = view.requestMenuCommand(commandMap.keySet().stream().toList());
-            if (!commandMap.containsKey(input)) {
-                view.printCommandNotFound();
-            } else {
-                Command command = commandMap.get(input);
-                command.execute();
+        while (gameState != GameState.EXIT_STATE) {
+            switch (gameState) {
+                case MENU_STATE -> {
+                    String input = view.requestMenuCommand(commandMap.keySet().stream().toList());
+                    runCommand(input, commandMap);
+                }
             }
         }
     }
 
+    private void runCommand(String input, Map<String, Command> commandMap) {
+        if (!commandMap.containsKey(input)) {
+            view.printCommandNotFound();
+        } else {
+            Command command = commandMap.get(input);
+            command.execute();
+        }
+    }
+    public void setGameState(GameState gameState) {
+        this.gameState = gameState;
+    }
+
+    public void setView(View view) {
+        this.view = view;
+    }
+
+    public void setCommandMap(Map<String, Command> commandMap) {
+        this.commandMap = commandMap;
+    }
 }
+
