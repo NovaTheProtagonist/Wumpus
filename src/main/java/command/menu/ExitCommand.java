@@ -1,23 +1,19 @@
 package command.menu;
 
+import app.WumpusGame;
 import command.Command;
-import command.GameStateBinding;
+import app.GameState;
 import service.menu.MenuService;
 
 public class ExitCommand implements Command {
-    private final MenuService menuService;
+    private final WumpusGame wumpusGame;
 
-    public ExitCommand(MenuService menuService) {
-        this.menuService = menuService;
+    public ExitCommand(WumpusGame wumpusGame) {
+        this.wumpusGame = wumpusGame;
     }
 
     @Override
     public void execute() {
-        menuService.exit();
-    }
-
-    @Override
-    public GameStateBinding getGameStateBinding() {
-        return GameStateBinding.MENU_STATE;
+        wumpusGame.setGameState(GameState.EXIT_STATE);
     }
 }
