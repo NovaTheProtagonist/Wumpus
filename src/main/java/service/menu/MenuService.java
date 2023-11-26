@@ -3,6 +3,7 @@ package service.menu;
 import java.util.Optional;
 
 import model.board.Board;
+import model.hero.Hero;
 
 public interface MenuService {
     void startGame();
@@ -14,5 +15,9 @@ public interface MenuService {
     void saveToDatabase(String playerName, Integer winCount);
 
     String cachePlayerName(String playerName);
+
+    Optional<Board> getBoard();
+
+    Optional<Hero> getHero();
 
 }

@@ -8,12 +8,16 @@ import java.util.Scanner;
 import model.board.Board;
 import model.coordinate.Coordinate;
 import model.hero.FacingDirection;
-
+import model.hero.Hero;
 
 
 public class MenuServiceImpl implements MenuService {
 
     private String playerName;
+
+    private Optional<Board> board = Optional.empty();
+
+    private Optional<Hero> hero = Optional.empty();
 
     @Override
     public void startGame() {
@@ -65,5 +69,15 @@ public class MenuServiceImpl implements MenuService {
     public String cachePlayerName(String playerName) {
         this.playerName = playerName;
         return this.playerName;
+    }
+
+    @Override
+    public Optional<Board> getBoard() {
+        return board;
+    }
+
+    @Override
+    public Optional<Hero> getHero() {
+        return hero;
     }
 }
