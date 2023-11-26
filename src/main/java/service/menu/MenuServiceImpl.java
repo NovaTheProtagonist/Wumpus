@@ -6,6 +6,7 @@ import java.util.Optional;
 import java.util.Scanner;
 
 import model.board.Board;
+import model.board.TileType;
 import model.coordinate.Coordinate;
 import model.hero.FacingDirection;
 import model.hero.Hero;
@@ -25,7 +26,7 @@ public class MenuServiceImpl implements MenuService {
     }
 
     @Override
-    public Optional<Board> readFile(String fileName) {
+    public void readFile(String fileName) {
         Optional<Board> newBoard = Optional.empty();
         InputStream boardFile = this.getClass().getClassLoader().getResourceAsStream(fileName);
 
@@ -38,11 +39,15 @@ public class MenuServiceImpl implements MenuService {
             int boardSize = Integer.parseInt(gameConfig[0]);
             newBoard = Optional.of(new Board(Integer.parseInt(gameConfig[0]), playerStartCoordinate));
 
+            int playerArrowCount = 0;
+
             for (int i = 0; i < boardSize; i++) {
                 String line = reader.nextLine();
                 for (int j = 0; j < boardSize; j++) {
                     newBoard.get().setBoardTile(i, j, line.charAt(j));
-
+                    if (line.charAt(j) == TileType.WUMPUS.getShortName()) {
+                        playerArrowCount++;
+                    }
                 }
             }
 
@@ -50,9 +55,14 @@ public class MenuServiceImpl implements MenuService {
                     .filter((FacingDirection f) -> f.name().charAt(0) == gameConfig[3].charAt(0))
                     .findAny()
                     .orElseThrow();
-        }
 
-        return newBoard;
+            this.board = newBoard;
+            Hero hero = new Hero();
+            hero.setName(this.playerName);
+            hero.setFacingDirection(facingDirection);
+            hero.setArrows(playerArrowCount);
+            this.hero = Optional.of(hero);
+        }
     }
 
     @Override

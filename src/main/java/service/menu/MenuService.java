@@ -8,7 +8,7 @@ import model.hero.Hero;
 public interface MenuService {
     void startGame();
 
-    Optional<Board> readFile(String fileName);
+    void readFile(String fileName);
 
     void loadFromDatabase(String playerName);
 
