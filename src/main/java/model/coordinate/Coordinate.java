@@ -12,6 +12,14 @@ public class Coordinate {
         this.row = row;
     }
 
+    public char getColumn() {
+        return column;
+    }
+
+    public int getRow() {
+        return row;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
