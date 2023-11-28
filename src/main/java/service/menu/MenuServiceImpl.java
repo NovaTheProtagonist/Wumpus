@@ -10,6 +10,7 @@ import model.board.TileType;
 import model.coordinate.Coordinate;
 import model.hero.FacingDirection;
 import model.hero.Hero;
+import model.hero.Position;
 
 
 public class MenuServiceImpl implements MenuService {
@@ -37,7 +38,7 @@ public class MenuServiceImpl implements MenuService {
             String[] gameConfig = firstLine.split(" ");
             Coordinate playerStartCoordinate = new Coordinate(gameConfig[1].charAt(0), Integer.parseInt(gameConfig[2]));
             int boardSize = Integer.parseInt(gameConfig[0]);
-            newBoard = Optional.of(new Board(Integer.parseInt(gameConfig[0]), playerStartCoordinate));
+            newBoard = Optional.of(new Board(Integer.parseInt(gameConfig[0])));
 
             int playerArrowCount = 0;
 
@@ -61,6 +62,7 @@ public class MenuServiceImpl implements MenuService {
             hero.setName(this.playerName);
             hero.setFacingDirection(facingDirection);
             hero.setArrows(playerArrowCount);
+            hero.setPosition(new Position(playerStartCoordinate));
             this.hero = Optional.of(hero);
         }
     }
