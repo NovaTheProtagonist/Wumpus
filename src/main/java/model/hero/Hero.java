@@ -6,6 +6,8 @@ public class Hero {
     private int arrows;
     private FacingDirection facingDirection;
 
+    private Position position;
+
     public String getName() {
         return name;
     }
@@ -30,6 +32,14 @@ public class Hero {
         this.arrows = arrows;
     }
 
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
     public FacingDirection getFacingDirection() {
         return facingDirection;
     }
@@ -42,6 +52,16 @@ public class Hero {
             case RIGHT -> facingDirection = facingDirection.toRight();
             case LEFT -> facingDirection = facingDirection.toLeft();
             default -> throw new RuntimeException("Cannot rotate player: Invalid rotation");
+        }
+    }
+
+    public void stepForward() {
+        switch (facingDirection) {
+            case NORTH -> position = new Position(position.getColumn(), position.getRow() - 1 );
+            case SOUTH -> position = new Position(position.getColumn(), position.getRow() + 1);
+            case WEST -> position = new Position(position.getColumn() - 1, position.getRow());
+            case EAST -> position = new Position(position.getColumn() + 1, position.getRow());
+            default -> throw new RuntimeException("Cannot go forward: Invalid Facingdirection");
         }
     }
 }
