@@ -8,12 +8,12 @@ public class Board {
 
     private final BoardTile[][] boardTiles;
 
-    private final Coordinate playerStartCoordinate;
 
-    public Board(int size, Coordinate playerStartCoordinate) {
+
+    public Board(int size) {
         this.size = size;
         boardTiles = new BoardTile[size][size];
-        this.playerStartCoordinate = playerStartCoordinate;
+
     }
 
     public int getSize() {
