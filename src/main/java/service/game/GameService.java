@@ -3,6 +3,7 @@ package service.game;
 import model.board.Board;
 import model.board.TileType;
 import model.hero.Hero;
+import model.hero.Rotation;
 
 public interface GameService {
     Board getBoard();
@@ -17,7 +18,7 @@ public interface GameService {
 
     void movePlayer();
 
-    void rotatePlayer();
+    void rotatePlayer(Rotation rotation);
 
     void shootArrow();
 
