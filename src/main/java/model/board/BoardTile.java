@@ -3,7 +3,13 @@ package model.board;
 import java.util.Arrays;
 
 public class BoardTile {
-    private TileType type = TileType.EMPTY;
+    private TileType type;
+
+    private boolean isOccupied;
+
+    public BoardTile() {
+        type = TileType.EMPTY;
+    }
 
     public BoardTile(char typeID) {
         this.type = Arrays.stream(TileType.values())
@@ -22,8 +28,12 @@ public class BoardTile {
 
     @Override
     public String toString() {
-
+        if (isOccupied) return "H";
         return type.toString();
+    }
+
+    public void setOccupied(boolean occupied) {
+        isOccupied = occupied;
     }
 }
 
