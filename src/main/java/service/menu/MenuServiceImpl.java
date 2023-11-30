@@ -6,6 +6,7 @@ import java.util.Optional;
 import java.util.Scanner;
 
 import model.board.Board;
+import model.board.BoardTile;
 import model.board.TileType;
 import model.coordinate.Coordinate;
 import model.hero.FacingDirection;
@@ -37,6 +38,7 @@ public class MenuServiceImpl implements MenuService {
             String firstLine = reader.nextLine();
             String[] gameConfig = firstLine.split(" ");
             Coordinate playerStartCoordinate = new Coordinate(gameConfig[1].charAt(0), Integer.parseInt(gameConfig[2]));
+            Position startPosition = new Position(playerStartCoordinate);
             int boardSize = Integer.parseInt(gameConfig[0]);
             newBoard = Optional.of(new Board(Integer.parseInt(gameConfig[0])));
 
@@ -57,12 +59,14 @@ public class MenuServiceImpl implements MenuService {
                     .findAny()
                     .orElseThrow();
 
+            BoardTile spawnTile = newBoard.get().getBoardTile(startPosition);
+            spawnTile.setType(TileType.SPAWN);
             this.board = newBoard;
             Hero hero = new Hero();
             hero.setName(this.playerName);
             hero.setFacingDirection(facingDirection);
             hero.setArrows(playerArrowCount);
-            hero.setPosition(new Position(playerStartCoordinate));
+            hero.setPosition(startPosition);
             this.hero = Optional.of(hero);
         }
     }
