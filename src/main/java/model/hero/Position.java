@@ -9,7 +9,7 @@ public class Position {
 
     public Position(Coordinate coordinate) {
         row = coordinate.getRow() - 1;
-        column = (int) coordinate.getColumn() - (int) 'a';
+        column = (int) coordinate.getColumn() - (int) 'A';
     }
 
     public Position(int column, int row) {
