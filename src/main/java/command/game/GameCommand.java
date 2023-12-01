@@ -5,9 +5,9 @@ import service.game.GameService;
 import view.View;
 
 public abstract class GameCommand implements Command {
-    private final View view;
+    protected final View view;
 
-    private final GameService gameService;
+    protected final GameService gameService;
 
     public GameCommand(View view, GameService gameService) {
         this.view = view;
@@ -19,7 +19,10 @@ public abstract class GameCommand implements Command {
         runBeforePrint();
         view.printHero(gameService.getHero());
         view.printBoard(gameService.getBoard());
+        runAfterPrint();
     }
 
     protected abstract void runBeforePrint();
+
+    protected void runAfterPrint(){}
 }
