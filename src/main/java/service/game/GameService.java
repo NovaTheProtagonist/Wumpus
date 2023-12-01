@@ -22,8 +22,10 @@ public interface GameService {
 
     void shootArrow();
 
-    TileType getPlayerTileType();
+    GameStatus getGameStatus();
 
-    void spawnPlayer();
+    void startGame();
+
+    void clearBoard();
 
 }

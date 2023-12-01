@@ -14,6 +14,8 @@ public class GameServiceImpl implements GameService {
 
     private Hero hero;
 
+    private GameStatus gameStatus;
+
     @Override
     public Board getBoard() {
         return board;
@@ -36,19 +38,65 @@ public class GameServiceImpl implements GameService {
 
     @Override
     public void surrender() {
-        board = null;
-        hero = null;
+        clearBoard();
+        lose();
     }
 
     @Override
     public void movePlayer() {
+        FacingDirection facingDirection = hero.getFacingDirection();
         Position currentPosition = hero.getPosition();
         BoardTile currentTile = board.getBoardTile(currentPosition);
+        BoardTile nextTile = board.getBoardTile(currentPosition.nextInDirection(facingDirection));
+        switch (nextTile.getType()){
+            case WALL -> {
+                return;
+            }
+            case PIT -> handleStepOnPit();
+
+            case WUMPUS -> handleStepOnWumpus();
+
+            case GOLD -> handleStepOnGold(nextTile);
+
+            case SPAWN -> handleStepOnSpawn();
+
+        }
+        stepOnNewTile(currentTile, nextTile);
+    }
+
+    private void handleStepOnSpawn() {
+        if(hero.hasGold()){
+            gameStatus = GameStatus.WIN;
+        }
+    }
+
+    private void handleStepOnGold(BoardTile nextTile) {
+        hero.grabGold();
+        nextTile.setType(TileType.EMPTY);
+    }
+
+    private void handleStepOnWumpus() {
+        lose();
+    }
+
+    private void handleStepOnPit() {
+        int arrows = hero.getArrows();
+        if(arrows <=0){
+            lose();
+        }
+        else {
+            hero.setArrows(arrows - 1);
+        }
+    }
+
+    private void stepOnNewTile(BoardTile currentTile, BoardTile nextTile) {
         currentTile.setOccupied(false);
         hero.stepForward();
-        Position nextPosition = hero.getPosition();
-        BoardTile nextTile = board.getBoardTile(nextPosition);
         nextTile.setOccupied(true);
+    }
+
+    private void lose() {
+        gameStatus = GameStatus.LOSE;
     }
 
     @Override
@@ -59,29 +107,44 @@ public class GameServiceImpl implements GameService {
     @Override
     public void shootArrow() {
         int currentArrows = hero.getArrows();
+        if (currentArrows <=0){
+            return;
+        }
         hero.setArrows(currentArrows - 1);
         FacingDirection facingDirection = hero.getFacingDirection();
         Position heroPosition = hero.getPosition();
+        Position nextPosition = heroPosition.nextInDirection(facingDirection);
         while (true) {
-            BoardTile nextTile = board.getBoardTile(heroPosition.nextInDirection(facingDirection));
+            BoardTile nextTile = board.getBoardTile(nextPosition);
             if (nextTile.getType() == TileType.WALL)
                 break;
             if (nextTile.getType() == TileType.WUMPUS) {
                 nextTile.setType(TileType.EMPTY);
                 break;
             }
+            nextPosition = nextPosition.nextInDirection(facingDirection);
         }
     }
 
-    @Override
-    public TileType getPlayerTileType() {
-        Position heroPosition = hero.getPosition();
-        BoardTile playerTile = board.getBoardTile(heroPosition.getColumn(), heroPosition.getRow());
-        return playerTile.getType();
+
+    private void spawnPlayer() {
+        board.spawnHero(hero);
     }
 
     @Override
-    public void spawnPlayer() {
-        board.spawnHero(hero);
+    public GameStatus getGameStatus() {
+        return gameStatus;
+    }
+
+    @Override
+    public void startGame() {
+        gameStatus = GameStatus.ONGOING;
+        spawnPlayer();
+    }
+
+    @Override
+    public void clearBoard() {
+        board = null;
+        hero = null;
     }
 }
