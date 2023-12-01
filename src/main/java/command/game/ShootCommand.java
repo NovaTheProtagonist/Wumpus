@@ -10,6 +10,7 @@ public class ShootCommand extends GameCommand {
 
     @Override
     protected void runBeforePrint() {
+        gameService.shootArrow();
 
     }
 }
