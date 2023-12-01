@@ -48,6 +48,13 @@ public class WumpusGame {
                     String input = view.requestMenuCommand(getMenuCommands().keySet().stream().toList());
                     runCommand(input, getMenuCommands());
                 }
+                case GAME_STATE -> {
+                    String input = view.requestGameCommand(getGameCommands().keySet().stream().toList());
+                    runCommand(input, getGameCommands());
+                }
+                default -> {
+
+                }
             }
         }
     }
@@ -63,6 +70,10 @@ public class WumpusGame {
 
     private Map<String, Command> getMenuCommands() {
         return commandMap.get(CommandType.MENU);
+    }
+
+    private Map<String, Command> getGameCommands() {
+        return commandMap.get(CommandType.GAME);
     }
 }
 
