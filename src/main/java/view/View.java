@@ -1,9 +1,11 @@
 package view;
 
 import java.util.List;
+import java.util.Optional;
 
 import model.board.Board;
 import model.hero.Hero;
+import model.hero.Rotation;
 
 
 public interface View {
@@ -30,4 +32,6 @@ public interface View {
     void printLose();
 
     void printInstructions();
+
+    Optional<Rotation> requestRotation();
 }

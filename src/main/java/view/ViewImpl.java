@@ -1,12 +1,11 @@
 package view;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.Scanner;
+import java.util.*;
 
 import model.board.Board;
 import model.hero.Hero;
 import model.hero.Position;
+import model.hero.Rotation;
 
 public class ViewImpl implements View {
     @Override
@@ -96,5 +95,15 @@ public class ViewImpl implements View {
                 "resulting in you losing an arrow");
         System.out.println("If you step onto a tile where a Wumpus (U) resides you shall perish");
         System.out.println("Good luck!\n");
+    }
+
+    @Override
+    public Optional<Rotation> requestRotation() {
+        System.out.println("Please choose which way to rotate L or R: \n");
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+        Optional<Rotation> rotation = Arrays.stream(Rotation.values())
+                .filter(rotation1 -> rotation1.name().startsWith(input)).findAny();
+        return rotation;
     }
 }
