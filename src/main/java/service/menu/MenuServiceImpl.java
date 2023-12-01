@@ -22,10 +22,6 @@ public class MenuServiceImpl implements MenuService {
 
     private Optional<Hero> hero = Optional.empty();
 
-    @Override
-    public void startGame() {
-
-    }
 
     @Override
     public void readFile(String fileName) {

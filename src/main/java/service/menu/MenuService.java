@@ -6,7 +6,6 @@ import model.board.Board;
 import model.hero.Hero;
 
 public interface MenuService {
-    void startGame();
 
     void readFile(String fileName);
 
