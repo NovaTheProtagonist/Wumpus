@@ -68,7 +68,7 @@ public class ViewImpl implements View {
     public void printHero(Hero hero) {
         System.out.println(hero.getName());
         Position heroPosition = hero.getPosition();
-        System.out.println("Position: " + heroPosition.getColumn() + 1 + ", " + heroPosition.getRow() + 1);
+        System.out.println("Position: " + (heroPosition.getColumn() + 1) + ", " + (heroPosition.getRow() + 1));
         System.out.println("Facing: " + hero.getFacingDirection().name());
         System.out.println("Ammo: " + hero.getArrows());
         System.out.println(hero.hasGold() ? "You are in possession of the Gold" : "You do not possess the Gold");
