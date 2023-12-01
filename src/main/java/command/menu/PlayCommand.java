@@ -39,7 +39,7 @@ public class PlayCommand implements Command {
         gameService.setBoard(gameBoard);
         Hero gameHero = hero.get();
         gameService.setHero(gameHero);
-        gameService.spawnPlayer();
+        gameService.startGame();
         view.printInstructions();
         view.printHero(gameHero);
         view.printBoard(gameBoard);
