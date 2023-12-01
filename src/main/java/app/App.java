@@ -45,7 +45,7 @@ public class App {
 
         Map<String, Command> gameCommands = Map.of(
                 "surrender", new SurrenderCommand(view, wumpusGame, gameService),
-                "move", new MoveCommand(view, gameService),
+                "move", new MoveCommand(view, gameService, wumpusGame),
                 "rotate", new RotateCommand(view, gameService),
                 "shoot", new ShootCommand(view, gameService)
 
