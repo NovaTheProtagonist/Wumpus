@@ -25,18 +25,16 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public void readFile(String fileName) {
-        Optional<Board> newBoard = Optional.empty();
         InputStream boardFile = this.getClass().getClassLoader().getResourceAsStream(fileName);
 
-        Scanner reader = null;
         if (boardFile != null) {
-            reader = new Scanner(boardFile);
+            Scanner reader = new Scanner(boardFile);
             String firstLine = reader.nextLine();
             String[] gameConfig = firstLine.split(" ");
             Coordinate playerStartCoordinate = new Coordinate(gameConfig[1].charAt(0), Integer.parseInt(gameConfig[2]));
             Position startPosition = new Position(playerStartCoordinate);
             int boardSize = Integer.parseInt(gameConfig[0]);
-            newBoard = Optional.of(new Board(Integer.parseInt(gameConfig[0])));
+            Optional<Board> newBoard = Optional.of(new Board(Integer.parseInt(gameConfig[0])));
 
             int playerArrowCount = 0;
 
