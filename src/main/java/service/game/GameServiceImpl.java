@@ -79,4 +79,9 @@ public class GameServiceImpl implements GameService {
         BoardTile playerTile = board.getBoardTile(heroPosition.getColumn(), heroPosition.getRow());
         return playerTile.getType();
     }
+
+    @Override
+    public void spawnPlayer() {
+        board.spawnHero(hero);
+    }
 }

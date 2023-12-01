@@ -24,4 +24,6 @@ public interface GameService {
 
     TileType getPlayerTileType();
 
+    void spawnPlayer();
+
 }
