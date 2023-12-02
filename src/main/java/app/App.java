@@ -12,6 +12,8 @@ import command.menu.ExitCommand;
 import command.menu.PlayCommand;
 import command.menu.ReadFileCommand;
 import command.menu.SavePlayerNameCommand;
+import persistance.PlayerRepository;
+import persistance.PlayerRepositoryImpl;
 import service.game.GameService;
 import service.game.GameServiceImpl;
 import service.menu.MenuService;
@@ -20,9 +22,11 @@ import view.View;
 import view.ViewImpl;
 
 public class App {
-    private static final MenuService menuService = new MenuServiceImpl();
 
-    private static final GameService gameService = new GameServiceImpl();
+    private static final PlayerRepository playerRepository = new PlayerRepositoryImpl("","","");
+    private static final MenuService menuService = new MenuServiceImpl(playerRepository);
+
+    private static final GameService gameService = new GameServiceImpl(playerRepository);
     private static final View view = new ViewImpl();
 
     private static final WumpusGame wumpusGame = new WumpusGame();

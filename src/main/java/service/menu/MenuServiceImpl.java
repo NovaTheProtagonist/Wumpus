@@ -12,15 +12,22 @@ import model.coordinate.Coordinate;
 import model.hero.FacingDirection;
 import model.hero.Hero;
 import model.hero.Position;
+import persistance.PlayerRepository;
 
 
 public class MenuServiceImpl implements MenuService {
+
+    private final PlayerRepository playerRepository;
 
     private String playerName;
 
     private Optional<Board> board = Optional.empty();
 
     private Optional<Hero> hero = Optional.empty();
+
+    public MenuServiceImpl(PlayerRepository playerRepository) {
+        this.playerRepository = playerRepository;
+    }
 
 
     @Override

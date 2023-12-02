@@ -3,13 +3,17 @@ package service.menu;
 import model.board.Board;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import persistance.PlayerRepository;
+import persistance.PlayerRepositoryImpl;
 
 import java.util.Optional;
 
 
 class MenuServiceImplTest {
 
-    MenuService menuService = new MenuServiceImpl();
+    PlayerRepository playerRepository = new PlayerRepositoryImpl("","","");
+
+    MenuService menuService = new MenuServiceImpl(playerRepository);
 
     String expectedBoard =
             "WWWWWW\n" +

@@ -7,6 +7,7 @@ import model.hero.FacingDirection;
 import model.hero.Hero;
 import model.hero.Position;
 import model.hero.Rotation;
+import persistance.PlayerRepository;
 
 public class GameServiceImpl implements GameService {
 
@@ -15,6 +16,12 @@ public class GameServiceImpl implements GameService {
     private Hero hero;
 
     private GameStatus gameStatus;
+
+    private final PlayerRepository playerRepository;
+
+    public GameServiceImpl(PlayerRepository playerRepository) {
+        this.playerRepository = playerRepository;
+    }
 
     @Override
     public Board getBoard() {

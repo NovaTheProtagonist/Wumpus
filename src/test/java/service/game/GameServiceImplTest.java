@@ -10,12 +10,14 @@ import model.hero.Rotation;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
+import persistance.PlayerRepository;
+import persistance.PlayerRepositoryImpl;
 
 class GameServiceImplTest {
 
-    GameService gameService = new GameServiceImpl();
+    PlayerRepository playerRepository = new PlayerRepositoryImpl("","","");
+
+    GameService gameService = new GameServiceImpl(playerRepository);
 
     Board board;
 
