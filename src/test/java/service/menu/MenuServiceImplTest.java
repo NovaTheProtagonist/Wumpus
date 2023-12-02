@@ -16,7 +16,7 @@ class MenuServiceImplTest {
             "W___PW\n" +
             "WUGP_W\n" +
             "W____W\n" +
-            "W__P_W\n" +
+            "WS_P_W\n" +
             "WWWWWW\n";
 
     @Test
