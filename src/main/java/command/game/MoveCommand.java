@@ -5,9 +5,10 @@ import app.WumpusGame;
 import service.game.GameService;
 import view.View;
 
-public class MoveCommand extends GameCommand{
+public class MoveCommand extends GameCommand {
 
     private final WumpusGame wumpusGame;
+
     public MoveCommand(View view, GameService gameService, WumpusGame wumpusGame) {
         super(view, gameService);
 
@@ -29,6 +30,9 @@ public class MoveCommand extends GameCommand{
             case WIN -> {
                 view.printWin();
                 switchToMenu();
+            }
+            default -> {
+
             }
         }
     }

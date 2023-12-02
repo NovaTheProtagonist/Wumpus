@@ -1,7 +1,6 @@
 package command.menu;
 
 import command.Command;
-import app.GameState;
 import service.menu.MenuService;
 import view.View;
 

@@ -47,6 +47,7 @@ public class Hero {
     public void setFacingDirection(FacingDirection facingDirection) {
         this.facingDirection = facingDirection;
     }
+
     public void rotate(Rotation rotation) {
         switch (rotation) {
             case RIGHT -> facingDirection = facingDirection.toRight();
@@ -57,7 +58,7 @@ public class Hero {
 
     public void stepForward() {
         switch (facingDirection) {
-            case NORTH -> position = new Position(position.getColumn(), position.getRow() - 1 );
+            case NORTH -> position = new Position(position.getColumn(), position.getRow() - 1);
             case SOUTH -> position = new Position(position.getColumn(), position.getRow() + 1);
             case WEST -> position = new Position(position.getColumn() - 1, position.getRow());
             case EAST -> position = new Position(position.getColumn() + 1, position.getRow());

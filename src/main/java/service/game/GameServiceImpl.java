@@ -48,7 +48,7 @@ public class GameServiceImpl implements GameService {
         Position currentPosition = hero.getPosition();
         BoardTile currentTile = board.getBoardTile(currentPosition);
         BoardTile nextTile = board.getBoardTile(currentPosition.nextInDirection(facingDirection));
-        switch (nextTile.getType()){
+        switch (nextTile.getType()) {
             case WALL -> {
                 return;
             }
@@ -60,12 +60,16 @@ public class GameServiceImpl implements GameService {
 
             case SPAWN -> handleStepOnSpawn();
 
+            default -> {
+
+            }
+
         }
         stepOnNewTile(currentTile, nextTile);
     }
 
     private void handleStepOnSpawn() {
-        if(hero.hasGold()){
+        if (hero.hasGold()) {
             gameStatus = GameStatus.WIN;
         }
     }
@@ -81,10 +85,9 @@ public class GameServiceImpl implements GameService {
 
     private void handleStepOnPit() {
         int arrows = hero.getArrows();
-        if(arrows <=0){
+        if (arrows <= 0) {
             lose();
-        }
-        else {
+        } else {
             hero.setArrows(arrows - 1);
         }
     }
@@ -107,7 +110,7 @@ public class GameServiceImpl implements GameService {
     @Override
     public void shootArrow() {
         int currentArrows = hero.getArrows();
-        if (currentArrows <=0){
+        if (currentArrows <= 0) {
             return;
         }
         hero.setArrows(currentArrows - 1);
@@ -116,8 +119,9 @@ public class GameServiceImpl implements GameService {
         Position nextPosition = heroPosition.nextInDirection(facingDirection);
         while (true) {
             BoardTile nextTile = board.getBoardTile(nextPosition);
-            if (nextTile.getType() == TileType.WALL)
+            if (nextTile.getType() == TileType.WALL) {
                 break;
+            }
             if (nextTile.getType() == TileType.WUMPUS) {
                 nextTile.setType(TileType.EMPTY);
                 break;
@@ -129,6 +133,8 @@ public class GameServiceImpl implements GameService {
 
     private void spawnPlayer() {
         board.spawnHero(hero);
+        BoardTile spawnTile = board.getBoardTile(hero.getPosition());
+        spawnTile.setType(TileType.SPAWN);
     }
 
     @Override

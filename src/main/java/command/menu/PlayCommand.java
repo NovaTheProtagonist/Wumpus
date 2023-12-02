@@ -1,5 +1,7 @@
 package command.menu;
 
+import java.util.Optional;
+
 import app.GameState;
 import app.WumpusGame;
 import command.Command;
@@ -9,7 +11,7 @@ import service.game.GameService;
 import service.menu.MenuService;
 import view.View;
 
-import java.util.Optional;
+
 
 public class PlayCommand implements Command {
 
@@ -20,6 +22,7 @@ public class PlayCommand implements Command {
     private final MenuService menuService;
 
     private final GameService gameService;
+
     public PlayCommand(View view, WumpusGame wumpusGame, MenuService menuService, GameService gameService) {
         this.view = view;
         this.wumpusGame = wumpusGame;

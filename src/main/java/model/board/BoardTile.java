@@ -28,7 +28,9 @@ public class BoardTile {
 
     @Override
     public String toString() {
-        if (isOccupied) return "H";
+        if (isOccupied) {
+            return "H";
+        }
         return type.toString();
     }
 

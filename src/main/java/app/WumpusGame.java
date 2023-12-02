@@ -3,11 +3,8 @@ package app;
 import java.util.Map;
 
 import command.Command;
-
 import command.CommandType;
 import view.View;
-
-
 
 public class WumpusGame {
 
@@ -41,6 +38,7 @@ public class WumpusGame {
     public void setCommandMap(Map<CommandType, Map<String, Command>> commandMap) {
         this.commandMap = commandMap;
     }
+
     private void startGameCycle() {
         while (gameState != GameState.EXIT_STATE) {
             switch (gameState) {

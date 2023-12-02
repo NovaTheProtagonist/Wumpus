@@ -1,6 +1,9 @@
 package view;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+import java.util.Scanner;
 
 import model.board.Board;
 import model.hero.Hero;
@@ -48,6 +51,7 @@ public class ViewImpl implements View {
         System.out.println("Loading File: " + fileName);
         return fileName;
     }
+
     @Override
     public void printCommandNotFound() {
         System.out.println("Invalid Command");

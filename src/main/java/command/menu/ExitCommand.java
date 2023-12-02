@@ -1,9 +1,8 @@
 package command.menu;
 
+import app.GameState;
 import app.WumpusGame;
 import command.Command;
-import app.GameState;
-import service.menu.MenuService;
 
 public class ExitCommand implements Command {
     private final WumpusGame wumpusGame;

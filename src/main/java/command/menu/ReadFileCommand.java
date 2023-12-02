@@ -22,9 +22,10 @@ public class ReadFileCommand implements Command {
         String fileName = view.requestFileName();
         menuService.readFile(fileName);
         Optional<Board> board = menuService.getBoard();
-        if (board.isPresent())
+        if (board.isPresent()) {
             view.printBoard(board.get());
-        else
+        } else {
             view.printError("Unable to read file");
+        }
     }
 }

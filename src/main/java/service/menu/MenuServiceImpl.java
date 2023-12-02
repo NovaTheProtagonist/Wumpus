@@ -48,7 +48,8 @@ public class MenuServiceImpl implements MenuService {
                 }
             }
 
-            FacingDirection facingDirection = Arrays.stream(FacingDirection.values())
+            FacingDirection facingDirection;
+            facingDirection = Arrays.stream(FacingDirection.values())
                     .filter((FacingDirection f) -> f.name().charAt(0) == gameConfig[3].charAt(0))
                     .findAny()
                     .orElseThrow();
