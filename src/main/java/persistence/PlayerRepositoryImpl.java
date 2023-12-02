@@ -1,6 +1,10 @@
 package persistence;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +23,7 @@ public class PlayerRepositoryImpl implements PlayerRepository {
             addStatement.setString(1, playerName);
             addStatement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 
@@ -35,7 +39,7 @@ public class PlayerRepositoryImpl implements PlayerRepository {
             updateStatement.setString(2, playerName);
             updateStatement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 
@@ -52,7 +56,7 @@ public class PlayerRepositoryImpl implements PlayerRepository {
                 playerResults.add(playerResult);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
         return playerResults;
     }

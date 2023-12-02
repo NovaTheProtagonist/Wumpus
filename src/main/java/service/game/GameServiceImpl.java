@@ -1,5 +1,7 @@
 package service.game;
 
+import java.util.List;
+
 import model.board.Board;
 import model.board.BoardTile;
 import model.board.TileType;
@@ -9,8 +11,6 @@ import model.hero.Position;
 import model.hero.Rotation;
 import persistence.PlayerRepository;
 import persistence.PlayerResult;
-
-import java.util.List;
 
 public class GameServiceImpl implements GameService {
 
@@ -86,7 +86,7 @@ public class GameServiceImpl implements GameService {
 
     private void win() {
         List<PlayerResult> playerResults = playerRepository.selectAll();
-        if(playerResults.stream().anyMatch((PlayerResult pr) -> pr.getPlayerName().equals(getHeroName()))) {
+        if (playerResults.stream().anyMatch((PlayerResult pr) -> pr.getPlayerName().equals(getHeroName()))) {
             playerRepository.updatePlayerScore(getHeroName());
         } else {
             playerRepository.addNewPlayer(getHeroName());

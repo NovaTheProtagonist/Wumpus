@@ -1,11 +1,11 @@
 package command.menu;
 
+import java.util.List;
+
 import command.Command;
 import persistence.PlayerResult;
 import service.menu.MenuService;
 import view.View;
-
-import java.util.List;
 
 public class LeaderboardCommand implements Command {
 
