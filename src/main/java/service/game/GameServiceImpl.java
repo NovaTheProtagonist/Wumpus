@@ -8,6 +8,9 @@ import model.hero.Hero;
 import model.hero.Position;
 import model.hero.Rotation;
 import persistance.PlayerRepository;
+import persistance.PlayerResult;
+
+import java.util.List;
 
 public class GameServiceImpl implements GameService {
 
@@ -77,8 +80,22 @@ public class GameServiceImpl implements GameService {
 
     private void handleStepOnSpawn() {
         if (hero.hasGold()) {
-            gameStatus = GameStatus.WIN;
+            win();
         }
+    }
+
+    private void win() {
+        List<PlayerResult> playerResults = playerRepository.selectAll();
+        if(playerResults.stream().anyMatch((PlayerResult pr) -> pr.getPlayerName().equals(getHeroName()))) {
+            playerRepository.updatePlayerScore(getHeroName());
+        } else {
+            playerRepository.addNewPlayer(getHeroName());
+        }
+        gameStatus = GameStatus.WIN;
+    }
+
+    private String getHeroName() {
+        return hero.getName();
     }
 
     private void handleStepOnGold(BoardTile nextTile) {
