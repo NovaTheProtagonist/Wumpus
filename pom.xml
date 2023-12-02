@@ -82,6 +82,7 @@
                         <exclude>model/**</exclude>
                         <exclude>view/**</exclude>
                         <exclude>command/**</exclude>
+                        <exclude>persistence/**</exclude>
                     </excludes>
                 </configuration>
                 <executions>
