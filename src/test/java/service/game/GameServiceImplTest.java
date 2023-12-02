@@ -78,6 +78,7 @@ class GameServiceImplTest {
         Assertions.assertEquals(expectedPosition, actualPosition);
         Assertions.assertEquals(expectedTile, actualTile);
         Assertions.assertEquals(TileType.SPAWN, actualTile.getType());
+        Assertions.assertEquals(GameStatus.WIN, gameService.getGameStatus());
     }
 
 
@@ -132,23 +133,73 @@ class GameServiceImplTest {
     }
 
     @Test
-    void testMovePlayerShouldMoveToNextTile() {
+    void testMovePlayerShouldMoveToNextTileAndLoseWhenNextTileIsAWumpus() {
         Position expectedPosition = new Position(2,2);
         BoardTile expectedTile = gameService.getBoard().getBoardTile(expectedPosition);
-        expectedTile.setType(TileType.PIT);
+        expectedTile.setType(TileType.WUMPUS);
 
-        hero.setArrows(0);
         gameService.movePlayer();
         Position actualPosition = gameService.getHero().getPosition();
         BoardTile actualTile = gameService.getBoard().getBoardTile(actualPosition);
 
         Assertions.assertEquals(expectedPosition, actualPosition);
         Assertions.assertEquals(expectedTile, actualTile);
-        Assertions.assertEquals(TileType.PIT, actualTile.getType());
+        Assertions.assertEquals(TileType.WUMPUS, actualTile.getType());
         Assertions.assertEquals(GameStatus.LOSE, gameService.getGameStatus());
-        Assertions.assertEquals(0, hero.getArrows());
     }
 
+    @Test
+    void testRotatePlayerShouldRotateCorrectly() {
+        FacingDirection expected1 = FacingDirection.EAST;
+        FacingDirection expected2 = FacingDirection.WEST;
 
+        gameService.rotatePlayer(Rotation.RIGHT);
 
+        Assertions.assertEquals(expected1, hero.getFacingDirection());
+
+        hero.setFacingDirection(FacingDirection.NORTH);
+        gameService.rotatePlayer(Rotation.LEFT);
+
+        Assertions.assertEquals(expected2, hero.getFacingDirection());
+    }
+
+    @Test
+    void testShootArrowShouldNotLoseAnArrowAndShouldNotHitWumpusWhenArrowCountIsZero() {
+        BoardTile boardTile = board.getBoardTile(new Position(2,2));
+        boardTile.setType(TileType.WUMPUS);
+        hero.setArrows(0);
+        gameService.shootArrow();
+
+        Assertions.assertEquals(0, hero.getArrows());
+        Assertions.assertEquals(TileType.WUMPUS, boardTile.getType());
+    }
+
+    @Test
+    void testShootArrowShouldKillWumpusAndLoseAnArrowWhenPlayerHasArrows() {
+        BoardTile boardTile = board.getBoardTile(new Position(2,2));
+        boardTile.setType(TileType.WUMPUS);
+        gameService.shootArrow();
+
+        Assertions.assertEquals(startingArrows - 1, hero.getArrows());
+        Assertions.assertEquals(TileType.EMPTY, boardTile.getType());
+    }
+
+    @Test
+    void testShootArrowShouldHitWallAndLoseAnArrowWhenPlayerHasArrowsAndThereIsNoWumpusInTheWay() {
+        BoardTile boardTile = board.getBoardTile(new Position(2,0));
+        boardTile.setType(TileType.WALL);
+        gameService.shootArrow();
+
+        Assertions.assertEquals(startingArrows - 1, hero.getArrows());
+        Assertions.assertEquals(TileType.WALL, boardTile.getType());
+    }
+
+    @Test
+    void testSurrenderShouldClearDataAndResultInALose() {
+        gameService.surrender();
+
+        Assertions.assertNull(gameService.getBoard());
+        Assertions.assertNull(gameService.getHero());
+        Assertions.assertEquals(GameStatus.LOSE, gameService.getGameStatus());
+    }
 }
