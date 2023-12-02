@@ -10,8 +10,8 @@ import model.coordinate.Coordinate;
 import model.hero.FacingDirection;
 import model.hero.Hero;
 import model.hero.Position;
-import persistance.PlayerRepository;
-import persistance.PlayerResult;
+import persistence.PlayerRepository;
+import persistence.PlayerResult;
 
 
 public class MenuServiceImpl implements MenuService {

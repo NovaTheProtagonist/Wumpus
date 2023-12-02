@@ -9,7 +9,7 @@ import model.board.Board;
 import model.hero.Hero;
 import model.hero.Position;
 import model.hero.Rotation;
-import persistance.PlayerResult;
+import persistence.PlayerResult;
 
 public class ViewImpl implements View {
     @Override

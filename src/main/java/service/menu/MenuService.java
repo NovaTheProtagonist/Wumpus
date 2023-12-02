@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import model.board.Board;
 import model.hero.Hero;
-import persistance.PlayerResult;
+import persistence.PlayerResult;
 
 public interface MenuService {
 

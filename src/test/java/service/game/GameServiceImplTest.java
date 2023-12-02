@@ -10,8 +10,8 @@ import model.hero.Rotation;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import persistance.PlayerRepository;
-import persistance.PlayerRepositoryImpl;
+import persistence.PlayerRepository;
+import persistence.PlayerRepositoryImpl;
 
 class GameServiceImplTest {
 

@@ -1,4 +1,4 @@
-package persistance;
+package persistence;
 
 import java.sql.*;
 import java.util.ArrayList;

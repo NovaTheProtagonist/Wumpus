@@ -1,4 +1,4 @@
-package persistance;
+package persistence;
 
 public class PlayerResult {
     private final String playerName;

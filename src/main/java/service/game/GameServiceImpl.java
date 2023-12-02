@@ -7,8 +7,8 @@ import model.hero.FacingDirection;
 import model.hero.Hero;
 import model.hero.Position;
 import model.hero.Rotation;
-import persistance.PlayerRepository;
-import persistance.PlayerResult;
+import persistence.PlayerRepository;
+import persistence.PlayerResult;
 
 import java.util.List;
 

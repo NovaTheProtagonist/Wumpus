@@ -3,8 +3,8 @@ package service.menu;
 import model.board.Board;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import persistance.PlayerRepository;
-import persistance.PlayerRepositoryImpl;
+import persistence.PlayerRepository;
+import persistence.PlayerRepositoryImpl;
 
 import java.util.Optional;
 

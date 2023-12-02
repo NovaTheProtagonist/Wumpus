@@ -6,7 +6,7 @@ import java.util.Optional;
 import model.board.Board;
 import model.hero.Hero;
 import model.hero.Rotation;
-import persistance.PlayerResult;
+import persistence.PlayerResult;
 
 
 public interface View {

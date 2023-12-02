@@ -1,7 +1,7 @@
 package command.menu;
 
 import command.Command;
-import persistance.PlayerResult;
+import persistence.PlayerResult;
 import service.menu.MenuService;
 import view.View;
 
