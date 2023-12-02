@@ -1,9 +1,7 @@
 package service.menu;
 
 import java.io.InputStream;
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.Scanner;
+import java.util.*;
 
 import model.board.Board;
 import model.board.BoardTile;
@@ -13,6 +11,7 @@ import model.hero.FacingDirection;
 import model.hero.Hero;
 import model.hero.Position;
 import persistance.PlayerRepository;
+import persistance.PlayerResult;
 
 
 public class MenuServiceImpl implements MenuService {
@@ -97,5 +96,12 @@ public class MenuServiceImpl implements MenuService {
     @Override
     public Optional<Hero> getHero() {
         return hero;
+    }
+
+    @Override
+    public List<PlayerResult> getTopList() {
+        return playerRepository.selectAll().stream()
+                .sorted(Comparator.comparingInt(PlayerResult::getWinCount).reversed())
+                .limit(5).toList();
     }
 }

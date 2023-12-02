@@ -8,10 +8,7 @@ import command.game.MoveCommand;
 import command.game.RotateCommand;
 import command.game.ShootCommand;
 import command.game.SurrenderCommand;
-import command.menu.ExitCommand;
-import command.menu.PlayCommand;
-import command.menu.ReadFileCommand;
-import command.menu.SavePlayerNameCommand;
+import command.menu.*;
 import persistance.PlayerRepository;
 import persistance.PlayerRepositoryImpl;
 import service.game.GameService;
@@ -45,7 +42,8 @@ public class App {
                 "change name", new SavePlayerNameCommand(menuService, view),
                 "read from file", new ReadFileCommand(menuService, view),
                 "exit", new ExitCommand(wumpusGame),
-                "play", new PlayCommand(view, wumpusGame, menuService, gameService)
+                "play", new PlayCommand(view, wumpusGame, menuService, gameService),
+                "leaderboard", new LeaderboardCommand(view, menuService)
         );
 
         Map<String, Command> gameCommands = Map.of(

@@ -1,9 +1,11 @@
 package service.menu;
 
+import java.util.List;
 import java.util.Optional;
 
 import model.board.Board;
 import model.hero.Hero;
+import persistance.PlayerResult;
 
 public interface MenuService {
 
@@ -18,5 +20,7 @@ public interface MenuService {
     Optional<Board> getBoard();
 
     Optional<Hero> getHero();
+
+    List<PlayerResult> getTopList();
 
 }

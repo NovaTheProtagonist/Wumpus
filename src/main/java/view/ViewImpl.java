@@ -9,6 +9,7 @@ import model.board.Board;
 import model.hero.Hero;
 import model.hero.Position;
 import model.hero.Rotation;
+import persistance.PlayerResult;
 
 public class ViewImpl implements View {
     @Override
@@ -109,5 +110,15 @@ public class ViewImpl implements View {
         Optional<Rotation> rotation = Arrays.stream(Rotation.values())
                 .filter(rotation1 -> rotation1.name().startsWith(input)).findAny();
         return rotation;
+    }
+
+    @Override
+    public void printTopList(List<PlayerResult> topList) {
+        System.out.println("Top 5 Players: \n");
+        for (int i = 0; i < topList.size(); i++) {
+            PlayerResult playerResult = topList.get(i);
+            System.out.println((i + 1) + ". " + playerResult.getPlayerName() + " | Score: " + playerResult.getWinCount());
+        }
+        System.out.println();
     }
 }

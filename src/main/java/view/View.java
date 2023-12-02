@@ -6,6 +6,7 @@ import java.util.Optional;
 import model.board.Board;
 import model.hero.Hero;
 import model.hero.Rotation;
+import persistance.PlayerResult;
 
 
 public interface View {
@@ -34,4 +35,6 @@ public interface View {
     void printInstructions();
 
     Optional<Rotation> requestRotation();
+
+    void printTopList(List<PlayerResult> topList);
 }

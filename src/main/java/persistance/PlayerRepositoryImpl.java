@@ -31,7 +31,7 @@ public class PlayerRepositoryImpl implements PlayerRepository {
             ResultSet resultSet = selectStatement.executeQuery();
             int score = resultSet.getInt("score");
             PreparedStatement updateStatement = connection.prepareStatement("UPDATE players SET score=? WHERE name=?");
-            updateStatement.setInt(1, score);
+            updateStatement.setInt(1, score + 1);
             updateStatement.setString(2, playerName);
             updateStatement.executeUpdate();
         } catch (SQLException e) {
