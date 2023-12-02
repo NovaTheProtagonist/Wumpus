@@ -15,7 +15,7 @@ import persistance.PlayerRepositoryImpl;
 
 class GameServiceImplTest {
 
-    PlayerRepository playerRepository = new PlayerRepositoryImpl("","","");
+    PlayerRepository playerRepository = new PlayerRepositoryImpl("");
 
     GameService gameService = new GameServiceImpl(playerRepository);
 

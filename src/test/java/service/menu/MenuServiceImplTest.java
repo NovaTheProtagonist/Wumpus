@@ -11,7 +11,7 @@ import java.util.Optional;
 
 class MenuServiceImplTest {
 
-    PlayerRepository playerRepository = new PlayerRepositoryImpl("","","");
+    PlayerRepository playerRepository = new PlayerRepositoryImpl("");
 
     MenuService menuService = new MenuServiceImpl(playerRepository);
 

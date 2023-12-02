@@ -8,14 +8,8 @@ public class PlayerRepositoryImpl implements PlayerRepository {
 
     private final String databaseUrl;
 
-    private final String userName;
-
-    private final String password;
-
-    public PlayerRepositoryImpl(String databaseUrl, String userName, String password) {
+    public PlayerRepositoryImpl(String databaseUrl) {
         this.databaseUrl = databaseUrl;
-        this.userName = userName;
-        this.password = password;
     }
 
     @Override
@@ -65,7 +59,7 @@ public class PlayerRepositoryImpl implements PlayerRepository {
 
     private Connection createConnection() throws SQLException {
         Connection connection = null;
-        connection = DriverManager.getConnection(databaseUrl, userName, password);
+        connection = DriverManager.getConnection(databaseUrl);
         return connection;
     }
 }

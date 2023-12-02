@@ -23,7 +23,7 @@ import view.ViewImpl;
 
 public class App {
 
-    private static final PlayerRepository playerRepository = new PlayerRepositoryImpl("","","");
+    private static final PlayerRepository playerRepository = new PlayerRepositoryImpl("jdbc:sqlite:C://database/kukac.db");
     private static final MenuService menuService = new MenuServiceImpl(playerRepository);
 
     private static final GameService gameService = new GameServiceImpl(playerRepository);
